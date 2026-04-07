@@ -40,5 +40,3 @@ gdt_end:
 gdt_descriptor:
     .word gdt_end - gdt_start - 1 // size (16 bit)
     .int  gdt_start               // address (32 bit)
-.org 510
-.word 0xaa55
