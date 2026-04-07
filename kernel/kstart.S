@@ -13,6 +13,7 @@
     .asciz "kernel start\n"
 _start:
     // zero out PD at 0x1000
+    mov edi, 0x1000
     xor eax, eax
     mov ecx, 1024
     rep stosd

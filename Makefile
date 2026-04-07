@@ -147,7 +147,11 @@ image.bin: mbr.raw fs.img
 	cat $< fs.img > $@
 
 mbr.raw: mbr.o bootmain.o
-	$(LD) -N -m elf_i386 -Ttext=0x7c00 --oformat=binary $^ -o $@
+	$(LD) -N -m elf_i386 -Ttext=0x7c00 --oformat=binary $^ -o $@.tmp
+	dd if=/dev/zero of=$@ bs=512 count=1 2>/dev/null
+	dd if=$@.tmp of=$@ conv=notrunc 2>/dev/null
+	python3 -c "import sys; sys.stdout.buffer.write(b'\x55\xaa')" | dd of=$@ bs=1 seek=510 conv=notrunc 2>/dev/null
+	rm $@.tmp
 
 clean:
 	rm -f *.elf *.img *.bin *.raw *.o */*.o */*/*.o tools/mkfs ejudge.sh
