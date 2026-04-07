@@ -8,7 +8,9 @@ tools/*
 
 user/*
 !user/*.*
+!user/snake_src/
 user/*.o
+user/snake_src/*.o
 
 .idea
 __pycache__

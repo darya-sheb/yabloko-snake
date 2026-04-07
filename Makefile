@@ -150,7 +150,7 @@ mbr.raw: mbr.o bootmain.o
 	$(LD) -N -m elf_i386 -Ttext=0x7c00 --oformat=binary $^ -o $@
 
 clean:
-	rm -f *.elf *.img *.bin *.raw *.o */*.o tools/mkfs ejudge.sh
+	rm -f *.elf *.img *.bin *.raw *.o */*.o */*/*.o tools/mkfs ejudge.sh
 
 tools/%: tools/%.c
 	gcc -Wall -Werror -g $^ -o $@
