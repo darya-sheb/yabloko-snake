@@ -1,0 +1,15 @@
+*.o
+*.img
+*.bin
+*.elf
+*.dSYM
+tools/*
+!tools/*.*
+
+user/*
+!user/*.*
+user/*.o
+
+.idea
+__pycache__
+res.txt
